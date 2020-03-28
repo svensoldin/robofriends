@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import Footer from '../components/Footer';
 import './App.css';
 
 
@@ -27,7 +28,7 @@ class App extends Component {
 
 	render () {
 		const filteredRobots = this.state.robots.filter(robot => {
-			return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
+			return robot.name.toLowerCase().startsWith(this.state.searchfield.toLowerCase())
 		})
 		if (this.state.robots === 0) {
 			return <h1>LOADING</h1>
@@ -39,6 +40,7 @@ class App extends Component {
 					<Scroll>
 						<CardList robots={filteredRobots} />
 					</Scroll>
+					<Footer />
 				</div>
 				);
 			}
